@@ -73,7 +73,7 @@ for username in usernames:
 kifus = [kifu for kifu in kifus if not firebase.exsits_kifu(kifu)]
 
 
-print("残り棋譜数",len(kifus))
+print("kifu_num",len(kifus))
 
 
 for kifu in kifus:
