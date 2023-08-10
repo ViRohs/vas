@@ -1,0 +1,18 @@
+
+{% extends 'base.html' %} {% block body %}
+
+{% for kifu in kifus %}
+<a href="view/{{kifu[1].id}}">
+<div class="row">
+    <div class="col">
+        {{kifu[1].first_player}}
+    </div>
+    <div class="col">
+        {{kifu[1].second_player}}
+    </div>
+
+</div></a>
+
+{% endfor %}
+
+{% endblock %}

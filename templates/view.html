@@ -1,0 +1,49 @@
+
+{% extends 'base.html' %} {% block body %}
+<div class="d-flex justify-content-center">
+    <div>
+    <img src="{{ image_urls[0] }}" class="image" alt="" id="image"></img>
+    <div class="row my-2">
+        <div class="btn btn-secondary col text-center mx-2" onclick="page(-500)">◀</div>
+        <div class="btn btn-secondary col text-center mx-2" onclick="page(-10)"><<</div>
+        <div class="btn btn-secondary col text-center mx-2" onclick="page(-1)"><</div>
+        <div class="btn btn-secondary col text-center mx-2" onclick="page(1)">></div>
+        <div class="btn btn-secondary col text-center mx-2" onclick="page(10)">>></div>
+        <div class="btn btn-secondary col text-center mx-2" onclick="page(500)">▶</div>
+    </div>
+    </div>
+</div>
+
+
+
+<script>
+    const imageElement = document.getElementById('image');
+    const switchButton = document.getElementById('switchButton');
+
+    var imageList = {{ image_urls|tojson }};
+
+    let currentImageIndex = 0;
+
+    function clampIndex(index) {
+        if (index < 0) {
+            return 0;
+        } else if (index >= imageList.length){
+            return imageList.length - 1;
+        } else {
+            return index;
+        }
+    }
+
+    function setImage() {
+        imageElement.src = imageList[currentImageIndex];
+    }
+
+    function page(move) {
+        currentImageIndex = clampIndex(currentImageIndex + move);
+        setImage();
+    }    
+
+
+</script>
+
+{% endblock %}
